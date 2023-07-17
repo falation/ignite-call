@@ -6,7 +6,7 @@ import { z } from 'zod'
 
 import { Form, FormAnnotation } from './styles'
 
-const claimUsernamgeFormSchema = z.object({
+const requestUsernameFormSchema = z.object({
   username: z
     .string()
     .min(3, { message: 'O usuário precisa ter pelo menos 3 letras.' })
@@ -16,24 +16,24 @@ const claimUsernamgeFormSchema = z.object({
     .transform((username) => username.toLowerCase()),
 })
 
-type ClaimUsernameFormData = z.input<typeof claimUsernamgeFormSchema>
+type RequestUsernameFormData = z.input<typeof requestUsernameFormSchema>
 
-export function ClaimUsernameForm() {
+export function RequestUsernameForm() {
   const {
     formState: { errors },
     handleSubmit,
     register,
-  } = useForm<ClaimUsernameFormData>({
-    resolver: zodResolver(claimUsernamgeFormSchema),
+  } = useForm<RequestUsernameFormData>({
+    resolver: zodResolver(requestUsernameFormSchema),
   })
 
-  async function handleClaimRegister(data: ClaimUsernameFormData) {
+  async function onSubmit(data: RequestUsernameFormData) {
     console.log(data)
   }
 
   return (
     <>
-      <Form as="form" onSubmit={handleSubmit(handleClaimRegister)}>
+      <Form as="form" onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           placeholder="seu-usuario"
           prefix="ignite.com/"
@@ -51,7 +51,7 @@ export function ClaimUsernameForm() {
         <Text size="sm">
           {errors.username
             ? errors.username.message
-            : 'Digite o nome do usuário desejado'}
+            : 'Digite o nome do usuário desejado.'}
         </Text>
       </FormAnnotation>
     </>

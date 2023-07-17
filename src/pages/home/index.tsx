@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import previewImage from '../../assets/app-preview.png'
 
-import { ClaimUsernameForm } from './components'
+import { RequestUsernameForm } from './components'
 import { Container, Hero, Preview } from './styles'
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
           no seu tempo livre.
         </Text>
 
-        <ClaimUsernameForm />
+        <RequestUsernameForm />
       </Hero>
 
       <Preview>

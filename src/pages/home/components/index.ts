@@ -1,1 +1,1 @@
-export { ClaimUsernameForm } from './ClaimUsernameForm'
+export { RequestUsernameForm } from './RequestUsernameForm'
