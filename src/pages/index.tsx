@@ -1,7 +1,5 @@
-import type { NextPage } from 'next'
+import { Text } from "@ignite-ui/react"
 
-const Home: NextPage = () => {
-  return <span>ignite-call</span>
+export default function Home() {
+  return <Text>ignite-call</Text>
 }
-
-export default Home
