@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Text, TextInput } from '@ignite-ui/react'
+import { useRouter } from 'next/router'
 import { ArrowRight } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -20,15 +21,19 @@ type RequestUsernameFormData = z.input<typeof requestUsernameFormSchema>
 
 export function RequestUsernameForm() {
   const {
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
     register,
   } = useForm<RequestUsernameFormData>({
     resolver: zodResolver(requestUsernameFormSchema),
   })
 
+  const router = useRouter()
+
   async function onSubmit(data: RequestUsernameFormData) {
-    console.log(data)
+    const { username } = data
+
+    await router.push(`/register?username=${username}`)
   }
 
   return (
@@ -41,7 +46,7 @@ export function RequestUsernameForm() {
           {...register('username')}
         />
 
-        <Button size="sm" type="submit">
+        <Button disabled={isSubmitting} size="sm" type="submit">
           Reservar
           <ArrowRight />
         </Button>
