@@ -11,6 +11,7 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { ArrowRight } from 'phosphor-react'
 import { z } from 'zod'
 
+import { api } from '../../../lib/axios'
 import { convertTimeStringToMinutes } from '../../../utils/convert-time-string-to-minutes'
 import { getWeekDays } from '../../../utils/get-wek-days'
 
@@ -98,7 +99,8 @@ export default function TimeIntervals() {
 
   async function onSubmit(data: any) {
     const formData = data as TimeIntervalsFormOutput
-    console.log(formData)
+
+    await api.post('/users/time-intervals', formData)
   }
 
   return (
