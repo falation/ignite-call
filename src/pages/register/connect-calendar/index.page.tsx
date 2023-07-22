@@ -19,6 +19,10 @@ export default function ConnectCalendar() {
     })
   }
 
+  async function onNavigateToNextStep() {
+    await router.push('/register/time-intervals')
+  }
+
   return (
     <Container>
       <Header>
@@ -53,7 +57,7 @@ export default function ConnectCalendar() {
           </AuthError>
         )}
 
-        <Button disabled={!isSignedId}>
+        <Button disabled={!isSignedId} onClick={onNavigateToNextStep}>
           Próximo passo
           <ArrowRight />
         </Button>
