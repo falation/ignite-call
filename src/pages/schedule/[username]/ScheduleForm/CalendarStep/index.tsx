@@ -9,7 +9,7 @@ import {
 } from './styles'
 
 export function CalendarStep() {
-  const isTimePickerOpen = true
+  const isTimePickerOpen = false
 
   return (
     <Container isTimePickerOpen={isTimePickerOpen}>
