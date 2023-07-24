@@ -55,8 +55,8 @@ export default async function handle(
       LEFT JOIN user_time_intervals
         ON user_time_intervals.week_day = WEEKDAY(DATE_ADD(schedulings.date, INTERVAL 1 DAY))
 
-      WHERE schedulings.user_id = "6d3236e7-aa92-42ac-a86d-5a744e7f311c"
-        AND DATE_FORMAT(schedulings.date, "%Y-%m") = "2023-07"
+      WHERE schedulings.user_id = ${user.id}
+        AND DATE_FORMAT(schedulings.date, "%Y-%m") = ${`${year}-${month}`}
 
       GROUP BY
         EXTRACT(DAY FROM schedulings.date),
